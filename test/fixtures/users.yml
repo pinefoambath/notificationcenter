@@ -1,4 +1,9 @@
 john:
   email: john@smith.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  created_at: <%= Time.zone.now %>
+  admin: false
+
+admin_user:
+  email: user1@mysite.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  admin: true
