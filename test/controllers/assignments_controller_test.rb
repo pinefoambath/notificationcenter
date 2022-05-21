@@ -3,16 +3,12 @@ module Api
     class AssignmentsControllerTest < ActionDispatch::IntegrationTest
       include Devise::Test::IntegrationHelpers
 
-      setup do
-        
-      end
-
-      test '#show' do
+      test '#check_read' do
         user_john = users(:john)
         user_id = user_john.id
         new_notification = Notification.create(title: 'testTitle', description: 'testDescription', date: DateTime.now)
         new_assignment = Assignment.create(notification_id: new_notification.id, user_id: user_id)
-        get api_v1_assignment_path, params: {user_id: user_id, notification_id: new_notification.id}
+        get api_v1_assignments_check_read_path, params: {user_id: user_id, notification_id: new_notification.id}
        
         assert_response :success
       end

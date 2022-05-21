@@ -1,12 +1,6 @@
 class Api::V1::AssignmentsController < Api::V1::BaseController
 
-  # http://localhost:3000/api/v1/assignments/:id shows whether a user has read a notification
-  def show
-    @assignment = Assignment.find(params[:id])
-    render :json => @assignment
-  end
-
-  # Allow admin to assign a notification to a user // http://localhost:3000/api/v1/assignments
+  # Allow admin to assign a notification to a user // http://localhost:3000/api/v1/assignments, requires a user_id and a notification_id
   def create
     na = Assignment.new(assignment_params)
     if na.save
@@ -15,16 +9,29 @@ class Api::V1::AssignmentsController < Api::V1::BaseController
       render_error
     end
   end
+
+  # http://localhost:3000/api/v1/assignments/check_read shows whether a user has read a notification; requries a user_id and a notification_id
+  def check_read
+    assignment_to_display = find_assignment
+    render json: assignment_to_display, status: :ok
+  end
+  
   
   private
 
   def assignment_params
     params.require(:assignment).permit(:user_id, :notification_id)
   end
-User
+
   def render_error
     render json: { errors: @notification.errors.full_messages },
       status: :unprocessable_entity
+  end
+
+  def find_assignment
+    needed_assignment = Assignment.where(user_id: params[:user_id], notification_id: params[:notification_id]).first
+    puts "needed_assignment: #{needed_assignment.inspect}"
+    return needed_assignment
   end
   
 end
