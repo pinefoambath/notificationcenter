@@ -3,10 +3,6 @@ module Api
     class AssignmentsControllerTest < ActionDispatch::IntegrationTest
       include Devise::Test::IntegrationHelpers
 
-      setup do
-        
-      end
-
       test '#show' do
         user_john = users(:john)
         user_id = user_john.id
