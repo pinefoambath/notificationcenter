@@ -29,6 +29,8 @@ gem "devise"
 
 gem "pundit", "~> 2.2"
 
+gem 'mock_push_service'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

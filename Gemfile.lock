@@ -120,6 +120,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    mock_push_service (0.1.0)
     msgpack (1.5.1)
     net-imap (0.2.3)
       digest
@@ -227,6 +228,7 @@ DEPENDENCIES
   devise
   jbuilder
   jsbundling-rails
+  mock_push_service
   pg (~> 1.1)
   propshaft
   puma (~> 5.0)
