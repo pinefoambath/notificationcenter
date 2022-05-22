@@ -27,6 +27,8 @@ gem "jbuilder"
 # Use devise for user management
 gem "devise"
 
+gem "pundit", "~> 2.2"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -65,4 +67,3 @@ group :test do
   gem "webdrivers"
 end
 
-gem "pundit", "~> 2.2"
