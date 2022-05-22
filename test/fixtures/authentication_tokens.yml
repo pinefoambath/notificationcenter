@@ -1,0 +1,11 @@
+one:
+  body: MyString
+  user: john
+  last_used_at: 2022-05-22 08:04:50
+  ip_addres: MyString
+
+two:
+  body: MyString
+  user: admin_user
+  last_used_at: 2022-05-22 08:04:50
+  ip_addres: MyString

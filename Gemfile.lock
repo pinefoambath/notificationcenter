@@ -204,6 +204,9 @@ GEM
       sidekiq (>= 4.0.0)
     strscan (3.0.3)
     thor (1.2.1)
+    tiddle (1.7.1)
+      activerecord (>= 5.2.0)
+      devise (>= 4.0.0.rc1, < 5)
     timeout (0.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -245,6 +248,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   sidekiq-failures (~> 1.0)
+  tiddle
   tzinfo-data
   web-console
   webdrivers

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_152754) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_060450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_152754) do
     t.datetime "updated_at", null: false
     t.index ["notification_id"], name: "index_assignments_on_notification_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "authentication_tokens", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.datetime "last_used_at"
+    t.string "ip_addres"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -45,4 +55,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_152754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "authentication_tokens", "users"
 end
