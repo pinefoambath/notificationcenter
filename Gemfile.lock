@@ -84,6 +84,7 @@ GEM
       xpath (~> 3.2)
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
     crass (1.0.6)
     cssbundling-rails (1.1.0)
       railties (>= 6.0.0)
@@ -182,6 +183,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.6.0)
     regexp_parser (2.4.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -194,6 +196,12 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sidekiq (6.4.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-failures (1.0.1)
+      sidekiq (>= 4.0.0)
     strscan (3.0.3)
     thor (1.2.1)
     timeout (0.2.0)
@@ -235,6 +243,8 @@ DEPENDENCIES
   pundit (~> 2.2)
   rails (~> 7.0.3)
   selenium-webdriver
+  sidekiq
+  sidekiq-failures (~> 1.0)
   tzinfo-data
   web-console
   webdrivers

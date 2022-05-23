@@ -31,6 +31,10 @@ gem "pundit", "~> 2.2"
 
 gem 'mock_push_service'
 
+#Use sidekiq for background jobs
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
