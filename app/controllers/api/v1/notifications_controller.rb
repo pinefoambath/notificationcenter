@@ -4,9 +4,9 @@ class Api::V1::NotificationsController < Api::V1::BaseController
   def create
     if current_user.admin?
       new_notification = Notification.new(notification_params)
-      MockPushService.send(title: new_notification.title, description: new_notification.description, token: "some_unique_device_token")
       if new_notification.save
         render json: new_notification, status: :created
+        SendToPushServiceJob.perform_now(Notification.last)
       else
         render_error
       end
