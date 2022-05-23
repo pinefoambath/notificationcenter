@@ -1,5 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate_user!
+  
   #As a client, I want to be able to view my notifications 
   def show
     @user = User.find(params[:id])
