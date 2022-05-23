@@ -6,12 +6,12 @@ class Api::V1::NotificationsController < Api::V1::BaseController
       new_notification = Notification.new(notification_params)
       if new_notification.save
         render json: new_notification, status: :created
-        SendToPushServiceJob.perform_now(Notification.last)
+        SendToPushServiceJob.perform_later(Notification.last)
       else
         render_error
       end
     else  
-       render_authorisation_error
+      render_authorisation_error
     end   
   end
 
