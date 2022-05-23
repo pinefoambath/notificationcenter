@@ -43,7 +43,7 @@ rails db:seed
 
 Tests: This repo currently does not run the tests when you type rails test (it's a bug and I didn't get around fixing it). You can run the tests inline though (depending on the IDE you are using). 
 
-To run the app you need to start both a rails server and a Sidekiq. To start the server type: 
+To run the app you need to start both a rails server and Sidekiq. To start the server type: 
 
 ```bash
 rails s
