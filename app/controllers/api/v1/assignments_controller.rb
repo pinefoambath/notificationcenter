@@ -31,11 +31,6 @@ class Api::V1::AssignmentsController < Api::V1::BaseController
     params.require(:assignment).permit(:user_id, :notification_id)
   end
 
-  def render_error
-    render json: { errors: @notification.errors.full_messages },
-      status: :unprocessable_entity
-  end
-
   def find_assignment
     needed_assignment = Assignment.where(user_id: params[:user_id], notification_id: params[:notification_id]).first
     puts "needed_assignment: #{needed_assignment.inspect}"

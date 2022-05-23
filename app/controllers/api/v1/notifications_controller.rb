@@ -29,11 +29,4 @@ class Api::V1::NotificationsController < Api::V1::BaseController
   def notification_params
     params.require(:notification).permit(:title, :description, :date, assignment_ids: [])
   end
-
-
-  def render_error
-    render json: { errors: "@notification.errors.full_messages" },
-       status: :not_found
-  end
-
 end
