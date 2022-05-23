@@ -5,24 +5,14 @@ class Api::V1::NotificationsController < Api::V1::BaseController
     if current_user.admin?
       new_notification = Notification.new(notification_params)
       if new_notification.save
-        render json: new_notification, status: :created
         SendToPushServiceJob.perform_later(Notification.last)
+        render json: new_notification, status: :created
       else
         render_error
       end
     else  
       render_authorisation_error
     end   
-  end
-
-  # unused method - I originally intended to allow admins to assign a notification to a user throug nested associations, but I decided to use the assignment model instead
-  def update
-    notification_to_update = Notification.find(params[:id])
-    if notification_to_update.update(update_params)
-      render json: notification_to_update, status: :updated
-    else
-      render :new
-    end
   end
 
   private
