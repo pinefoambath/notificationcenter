@@ -3,22 +3,18 @@ class Api::V1::AssignmentsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   test '#check_read - works for admin user' do
-    admin_user = users(:admin_user)
-    sign_in admin_user
+    admin_user = sign_in_admin_user
     user_id = admin_user.id
     new_notification = Notification.create(title: 'testTitle', description: 'testDescription', date: DateTime.now)
-    new_assignment = Assignment.create(notification_id: new_notification.id, user_id:)
     get api_v1_assignments_check_read_path, params: { user_id:, notification_id: new_notification.id }
 
     assert_response :success
   end
 
   test '#check_read - non-admin users cannot access read status' do
-    non_admin_user = users(:john)
-    sign_in non_admin_user
+    non_admin_user = sign_in_non_admin_user
     user_id = non_admin_user.id
     new_notification = Notification.create(title: 'testTitle', description: 'testDescription', date: DateTime.now)
-    new_assignment = Assignment.create(notification_id: new_notification.id, user_id:)
     get api_v1_assignments_check_read_path, params: { user_id:, notification_id: new_notification.id }
 
     assert_response :unauthorized
