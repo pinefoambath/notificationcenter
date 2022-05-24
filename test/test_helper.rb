@@ -11,3 +11,17 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  def sign_in_admin_user
+    admin_user = users(:admin_user)
+    sign_in admin_user
+    return admin_user
+  end
+
+  def sign_in_non_admin_user
+    non_admin_user = users(:john)
+    sign_in non_admin_user
+    return non_admin_user
+  end
+end  
