@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :notifications, only: [:index, :show, :create, :update]
+      resources :notifications, only: %i[index show create update]
       resources :users, only: [:show]
-      resources :assignments, only: [:create, :update]
-      get "assignments/check_read", to: "assignments#check_read"
+      resources :assignments, only: %i[create update]
+      get 'assignments/check_read', to: 'assignments#check_read'
     end
   end
 end
