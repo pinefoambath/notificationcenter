@@ -32,8 +32,7 @@ class Api::V1::AssignmentsController < Api::V1::BaseController
   end
 
   def find_assignment
-    needed_assignment = Assignment.where(user_id: params[:user_id], notification_id: params[:notification_id]).first
-    puts "needed_assignment: #{needed_assignment.inspect}"
+    needed_assignment = Assignment.where(user_id: params[:user_id], notification_id: params[:notification_id])
     return needed_assignment
   end
   
