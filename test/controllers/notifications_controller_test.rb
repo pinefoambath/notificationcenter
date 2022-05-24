@@ -5,9 +5,10 @@ class Api::V1::NotificationsControllerTest < ActionDispatch::IntegrationTest
 
   test '#create - succesfull with admin user logged in' do
     sign_in_admin_user
-    
+
     assert_difference 'Notification.count', 1 do
-      post api_v1_notifications_path, params: {notification: { title: 'testTitle', description: 'testDescription', date: DateTime.now }}
+      post api_v1_notifications_path,
+           params: { notification: { title: 'testTitle', description: 'testDescription', date: DateTime.now } }
     end
 
     assert_equal 'testTitle', Notification.last.reload.title
@@ -16,11 +17,12 @@ class Api::V1::NotificationsControllerTest < ActionDispatch::IntegrationTest
 
   test '#create - fails with non-admin user logged in' do
     sign_in_non_admin_user
-    
-    assert_no_difference 'Notification.count'  do
-      post api_v1_notifications_path, params: {notification: { title: 'testTitle', description: 'testDescription', date: DateTime.now }}
+
+    assert_no_difference 'Notification.count' do
+      post api_v1_notifications_path,
+           params: { notification: { title: 'testTitle', description: 'testDescription', date: DateTime.now } }
     end
 
-    assert_response :unauthorized  
+    assert_response :unauthorized
   end
 end

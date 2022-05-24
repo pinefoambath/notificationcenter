@@ -5,6 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :assignments
-  has_many :notifications, through: :assignments  
-  
+  has_many :notifications, through: :assignments
 end
