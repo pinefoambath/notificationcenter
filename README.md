@@ -39,7 +39,7 @@ To run the app you need to start both a rails server and Sidekiq. To start the s
 rails s
 ```
 
-You will also need to install and start Sidekiq. Sidekiq will help us push new notifications to the Mock Push Service ansynchronous. 
+You will also need to install and start Sidekiq. Sidekiq will help us push new notifications in an ansynchronous manner, so that these notifications can work in the background. 
 
 To install sidekiq:
 
