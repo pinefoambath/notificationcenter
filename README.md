@@ -1,6 +1,8 @@
 # README
 
-This Rails app models a notification center REST API. Admin users can create notifications, allocate them to users, and see whether these users have seen the notification. Users can see the notifications allocated to them.
+I created this app to learn more about REST APIs in Rails. The app models a notification center REST API. Admin users can create notifications, allocate them to users, and see whether these users have seen the notification. Users can see the notifications allocated to them.
+
+I also used sidekiq to understand jobs and background processes.
 
 ## Launching the app 
 
@@ -53,9 +55,7 @@ sidekiq
 
 ## Accessing the API endpoints
 
-This is the first API I've built from scratch. I haven't had time to research and set up token-based authentication (or, I have spent some time researching Tiddle as a token-based authentication service that runs with Devise but then I ran out of time🙃 - there's an unmerged branch called "install-token-authorisation" which you can have a look at to see how far I got). 
-
-Instead, I have gone with Devise for restricting users to their only their notifications, and for restricting all other API endpoints to admin users. This works and the tests show that. However, I'm guessing token-based authentication is what you want for this app.  
+This is the first API I've built from scratch. You would probably go with token-based authentication but I left this out to just focus on the API structure for now. Instead, I have gone with Devise for restricting users to their only their notifications, and for restricting all other API endpoints to admin users. 
 
 In order to run the app locally, given the lack of tokens, you will first need to disable Devise-based authorisation:
 1) remove "before_action :authenticate_user!" from the users_controller
